@@ -3,6 +3,7 @@
 #include <string>
 
 float r, g, b;
+int button, state;
 
 void myDisplay(void)
 {
@@ -12,19 +13,7 @@ void myDisplay(void)
 
 void myMouse(int b, int s, int x, int y)
 {
-	int maxY = glutGet(GLUT_WINDOW_HEIGHT);
-	y = maxY - y;
-
-	glColor3f(r, g, b);
-	if ((b == GLUT_LEFT_BUTTON) && (s == GLUT_DOWN))
-	{
-		printf("%f, %f, %f\n", r, g, b);
-
-		glBegin(GL_POINTS);
-			glVertex2i(x, y);
-		glEnd();
-	}
-	glFlush();
+	state = (b == GLUT_LEFT_BUTTON) && (s == GLUT_DOWN);
 }
 
 void myInit(void)
@@ -45,7 +34,20 @@ void receiveColorInput(int argc, char** argv)
 		g = std::stof(argv[2]);
 		b = std::stof(argv[3]);
 	}
+}
 
+void myMotionFunc(int x, int y)
+{
+	if (state)
+	{
+	int maxY = glutGet(GLUT_WINDOW_HEIGHT);
+	y = maxY - y;
+	glColor3f(r, g, b);
+		glBegin(GL_POINTS);
+		glVertex2i(x, y);
+		glEnd();
+	glFlush();
+	}
 }
 
 int main(int argc, char** argv)
@@ -58,6 +60,7 @@ int main(int argc, char** argv)
 	glutCreateWindow("Exercise 1.1");
 	glutDisplayFunc(myDisplay);
 	glutMouseFunc(myMouse);
+	glutMotionFunc(myMotionFunc);
 	myInit();
 	glutMainLoop();
 
