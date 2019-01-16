@@ -96,6 +96,13 @@
     <ClCompile Include="src\Week4\Exercise41.cpp" />
     <ClCompile Include="src\Week4\Example41.cpp" />
     <ClCompile Include="src\Week4\Example42.cpp" />
+    <ClCompile Include="src\Week5\Example50.cpp" />
+    <ClCompile Include="src\Week5\Example501_TestLookAtOrtho.cpp" />
+    <ClCompile Include="src\Week5\Exercise51.cpp" />
+    <ClCompile Include="src\Week5\Example52.cpp" />
+    <ClCompile Include="src\Week5\Example53.cpp" />
+    <ClCompile Include="src\Week5\Exercise52.cpp" />
+    <ClCompile Include="src\Week5\Exercise53.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
