@@ -14,11 +14,11 @@
 //	glColor3f(1.f, 0.0f, 0.f);
 //	glMatrixMode(GL_PROJECTION);
 //	glLoadIdentity();
-//	gluPerspective(45.0, 1.333, 10, 50);
+//	gluPerspective(20, 1.333, 10, 50);
 //
 //	glMatrixMode(GL_MODELVIEW);
 //	glLoadIdentity();
-//	gluLookAt(8, 10, 7, 0, 0, 0, 0, 1, 0);
+//	gluLookAt(7, 6, 15, 0, 0, 0, 0, 1, 0);
 //}
 //
 //void myDisplay()
@@ -38,6 +38,7 @@
 //
 //void myMouse(int button, int state, int x, int y)
 //{
+//	glClear(GL_COLOR_BUFFER_BIT);
 //	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 //	{
 //		fov += 5.f;
@@ -45,10 +46,20 @@
 //	glMatrixMode(GL_PROJECTION);
 //	glLoadIdentity();
 //	std::cout << fov << std::endl;
-//	gluPerspective(10, 1.333, 10, 50);
+//	gluPerspective(fov, 1.333, 10, 50);
 //	glMatrixMode(GL_MODELVIEW);
 //	glLoadIdentity();
-//	gluLookAt(8, 10, 7, 0, 0, 0, 0, 1, 0);
+//	gluLookAt(6, 6, 15, 0, 0, 0, 0, 1, 0);
+//	glPushMatrix();
+//	glScaled(1.0, 2.0, 1.0);
+//	glutWireCube(2);
+//	glPopMatrix();
+//	glPushMatrix();
+//	glTranslated(5.0, 0.0, 0.0);
+//	glScaled(2.0, 1.0, 1.0);
+//	glutWireCube(2);
+//	glPopMatrix();
+//	glFlush();
 //}
 //
 //

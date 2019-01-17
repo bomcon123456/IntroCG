@@ -103,6 +103,8 @@
     <ClCompile Include="src\Week5\Example53.cpp" />
     <ClCompile Include="src\Week5\Exercise52.cpp" />
     <ClCompile Include="src\Week5\Exercise53.cpp" />
+    <ClCompile Include="src\Week6\Example61.cpp" />
+    <ClCompile Include="src\Week6\Example62.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
