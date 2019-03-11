@@ -7,6 +7,13 @@
 bool bHasStarted = 0;
 const int scrH = 480;
 
+void swap(int&a, int& b)
+{
+	int temp = b;
+	b = a;
+	a = temp;
+}
+
 int flip(int y)
 {
 	return scrH - y;
@@ -27,29 +34,70 @@ void drawPoint(int x, int y)
 
 void MidPointAlgo(int x0, int y0, int x1, int y1)
 {
-	int dx, dy, incrE, incrNE, d, x, y;
-	dx = x1 - x0;
-	dy = y1 - y0;
-	d = 2 * dy - dx;
-	incrE = 2 * dy;
-	incrNE = 2 * (dy - dx);
-	x = x0; y = y0;
-	drawPoint(x, y);
-	while (x < x1)
+	// Initialize
+	// m: constant slope
+	bool steep = false;
+	int deltaX, deltaY, curX, curY;
+	int deltaNE, deltaE;
+
+	int absDeltaX = abs(x1 - x0);
+	int absDeltaY = abs(y1 - y0);
+
+	if (absDeltaX < absDeltaY)
 	{
-		if (d <= 0)	// select E
+		swap(x0, y0);
+		swap(x1, y1);
+		steep = true;
+	}
+	if (x0>x1)
+	{
+		swap(x0, x1);
+		swap(y0, y1);
+	}
+	deltaX = x1 - x0;
+	deltaY = y1 - y0;
+	deltaE = 2 * deltaY;
+	deltaNE = 2 * (deltaY - deltaX);
+	curX = x0; curY = y0;
+	int d = 2 * deltaY - deltaX;
+	drawPoint(x0, y0);
+	while (curX <= x1)
+	{
+		if (d <= 0)
 		{
-			d += incrE;
-			x++;
+			d += deltaE;
+			curX++;
 		}
 		else
 		{
-			d += incrNE;
-			x++;
-			y++;
+			d += deltaNE;
+			curX++;
+			curY++;
 		}
-		drawPoint(x, y);
+		if (steep)
+		{
+			drawPoint(curY, curX);
+		}
+		else
+		{
+			drawPoint(curX, curY);
+		}
 	}
+
+	//float m = deltaY / deltaX;
+	//if (m == 0 || m == 1)
+	//{
+	//	// Doesn't need bresenham (horizontal / diagonal)
+	//}
+	//if (m > -1 && m < 0)
+	//{
+	//	// flip about x-axis
+	//}
+	//else if (m>1)
+	//{
+	//	// flip about diagonal line (y=x);
+
+	//}
 }
 
 void myDisplay(void)
@@ -102,3 +150,28 @@ int main(int argc, char** argv)
 	glutMouseFunc(myMouse);
 	glutMainLoop();
 }
+
+/* Old Midpoint Algorithm*/
+//int dx, dy, incrE, incrNE, d, x, y;
+//dx = x1 - x0;
+//dy = y1 - y0;
+//d = 2 * dy - dx;
+//incrE = 2 * dy;
+//incrNE = 2 * (dy - dx);
+//x = x0; y = y0;
+//drawPoint(x, y);
+//while (x < x1)
+//{
+//	if (d <= 0)	// select E
+//	{
+//		d += incrE;
+//		x++;
+//	}
+//	else
+//	{
+//		d += incrNE;
+//		x++;
+//		y++;
+//	}
+//	drawPoint(x, y);
+//}
