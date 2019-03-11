@@ -88,6 +88,23 @@
     <ClCompile Include="src\Week2\Example3.cpp" />
     <ClCompile Include="src\Week2\Exercise1.cpp" />
     <ClCompile Include="src\Week2\Exercise2.cpp" />
+    <ClCompile Include="src\Week3\Example31.cpp" />
+    <ClCompile Include="src\Week3\Example32.cpp" />
+    <ClCompile Include="src\Week3\Exercise31.cpp" />
+    <ClCompile Include="src\Week3\Exercise32.cpp" />
+    <ClCompile Include="src\Week4\Example43.cpp" />
+    <ClCompile Include="src\Week4\Exercise41.cpp" />
+    <ClCompile Include="src\Week4\Example41.cpp" />
+    <ClCompile Include="src\Week4\Example42.cpp" />
+    <ClCompile Include="src\Week5\Example50.cpp" />
+    <ClCompile Include="src\Week5\Example501_TestLookAtOrtho.cpp" />
+    <ClCompile Include="src\Week5\Exercise51.cpp" />
+    <ClCompile Include="src\Week5\Example52.cpp" />
+    <ClCompile Include="src\Week5\Example53.cpp" />
+    <ClCompile Include="src\Week5\Exercise52.cpp" />
+    <ClCompile Include="src\Week5\Exercise53.cpp" />
+    <ClCompile Include="src\Week6\Example61.cpp" />
+    <ClCompile Include="src\Week6\Example62.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
