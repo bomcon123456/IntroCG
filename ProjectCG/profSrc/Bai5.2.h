@@ -1,0 +1,63 @@
+#pragma once
+#include <gl/glut.h>
+#include <gl/gl.h>
+
+GLdouble _fovy = 10;
+GLfloat _gocX = 0;
+GLfloat _gocY = 0;
+
+void myInit(void)
+{
+	glClearColor(1.0, 1.0, 1.0, 0.0);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(_fovy, 1, 6, 100);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluLookAt(0, 10, 0, 0, 0, 0, 1, 0, 0);
+}
+void myDisplay(void)
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glPushMatrix();
+	glRotatef(45, 1, 1, 1);
+	glutWireCube(1);
+	glPopMatrix();
+	glFlush();
+}
+void keyEvent(unsigned char key, int x, int y){
+	switch (key){
+	case 'q':{
+		_fovy += 1;
+		myInit();
+		myDisplay();
+		break;
+	}
+
+	case 'e':{
+		_fovy -= 1;
+		myInit();
+		myDisplay();
+		break;
+	}
+	case 27:{
+		exit(0);
+		break;
+	}
+	default:
+		break;
+	}
+}
+void run(int argc, char** argv)
+{
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowSize(640, 480);
+	glutInitWindowPosition(100, 150);
+	glutCreateWindow("Bai 5.2");
+	glutDisplayFunc(myDisplay);
+	glutKeyboardFunc(keyEvent);
+	myInit();
+	glutMainLoop();
+}
